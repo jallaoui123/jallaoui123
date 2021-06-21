@@ -1,0 +1,61 @@
+use world;
+
+SELECT COUNT(CountryCode) FROM city WHERE CountryCode = 'USA';
+SELECT population, lifeexpectancy FROM country WHERE name = 'Argentina';
+SELECT name, lifeexpectancy FROM country WHERE lifeexpectancy IS NOT NULL ORDER BY lifeexpectancy DESC LIMIT 1;
+
+SELECT name, lifeexpectancy FROM country WHERE lifeexpectancy IS NOT NULL ORDER BY lifeexpectancy DESC  20;
+
+describe country;
+describe city
+
+SELECT COUNT(CountryCode) 
+
+
+
+
+SELECT DISTINCT Language
+FROM countrylanguage;
+SELECT Name, GNP
+FROM country
+ORDER BY GNP DESC
+LIMIT 10;
+
+SELECT GovernmentForm
+FROM country
+GROUP BY GovernmentForm
+ORDER BY Count(GovernmentForm) DESC
+LIMIT 3;
+SELECT COUNT(IndepYear)
+FROM country
+WHERE IndepYear IS NOT NULL;
+
+
+
+
+
+
+
+
+SELECT DISTINCT Language, COUNT(Language) as Frequency
+FROM countrylanguage
+GROUP BY Language
+ORDER BY Frequency DESC
+LIMIT 10;
+SELECT Name, cl.Percentage
+FROM countrylanguage cl
+JOIN country co ON co.Code=cl.CountryCode
+WHERE cl.Language='German'
+AND cl.Percentage>50
+ORDER BY cl.Percentage DESC;
+SELECT Name, LifeExpectancy
+FROM country
+WHERE LifeExpectancy=(
+    SELECT MIN(LifeExpectancy)
+    FROM country
+    WHERE LifeExpectancy!=0
+);
+
+
+
+
