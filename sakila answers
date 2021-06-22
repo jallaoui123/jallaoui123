@@ -1,0 +1,32 @@
+use sakila;
+show tables;
+describe actor; 
+describe film;
+
+select * from actor;
+select last_name  from actor where first_name= 'John'  ;
+select * from actor where last_name = 'Neeson';
+select * from actor where actor_id % 10 = 0;
+select * from film where description = '100';
+select * from film where rating = 'R'; 
+select * from film where length <48; 
+select title, length from film order by length asc limit 10;
+select title, special_features from film where special_features like '%Deleted Scenes%';
+select last_name from actor group by last_name having COUNT(*) = 1 order by last_name Desc;
+select last_name from actor group by last_name having COUNT(*) > 1 order by COUNT(*) Desc;
+SELECT actor.first_name, actor.last_name FROM actor INNER JOIN film_actor ON actor.actor_id = film_actor.actor_id;
+select avg(length) from film;
+select category.name, avg(length)
+from film join film_category using (film_id) join category using (category_id)
+group by category.name
+order by avg(length) desc;
+select * from film where `description` = 'Robot';
+select * from film where release_year= '2010';
+SELECT CONCAT(first_name, ' ', last_name) AS name
+FROM staff
+WHERE staff_id=2;
+SELECT title, actors FROM film_list WHERE actors LIKE '%Fred Costner%';
+SELECT COUNT(DISTINCT country) FROM country;
+SELECT DISTINCT name FROM language ORDER BY name DESC;
+SELECT first_name, last_name FROM actor WHERE last_name LIKE '%son%' ORDER BY first_name;
+SELECT category, COUNT(title) FROM film_list GROUP BY category ORDER BY COUNT(title) DESC LIMIT 1;
